@@ -160,7 +160,9 @@ const std::string operating_status_to_str(OperatingStatus val) {
   } else if (val == OperatingStatus::OPERATING_STATUS_ON_9) {
     return "ON (9)";
   } else {
-    return esphome::str_snprintf("ON %u", 6, (uint8_t) val);
+    char buf[16];
+snprintf(buf, sizeof(buf), "ON %u", (unsigned) (uint8_t) val);
+return std::string(buf);
   }
 }
 
